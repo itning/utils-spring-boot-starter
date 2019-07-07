@@ -1,5 +1,7 @@
 package top.itning.utils.config;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -19,10 +21,15 @@ import java.io.IOException;
 @Configuration
 @EnableConfigurationProperties(EmailProperties.class)
 public class UtilsAutoConfigure {
+    private final Logger logger = LoggerFactory.getLogger(UtilsAutoConfigure.class);
+
     @Bean
-    @ConditionalOnProperty(prefix = "util.email", name = "enabled", havingValue = "true")
+    @ConditionalOnProperty(prefix = "utils.email", name = "enabled", havingValue = "true", matchIfMissing = true)
     @ConditionalOnMissingBean
     public EmailHelper emailHelper(EmailProperties emailProperties) throws IOException {
+        if (logger.isDebugEnabled()) {
+            logger.debug(emailProperties.toString());
+        }
         return new EmailHelper.Builder()
                 .setEmailSenderUser(emailProperties.getEmailSenderUser())
                 .setEmailSenderPwd(emailProperties.getEmailSenderPwd())
@@ -43,7 +50,11 @@ public class UtilsAutoConfigure {
      */
     private String getOrDefaultTemplateDir(EmailProperties emailProperties) throws FileNotFoundException {
         if (emailProperties.getTemplateDir() == null) {
-            return ResourceUtils.getFile("classpath:/").getPath();
+            String path = ResourceUtils.getFile("classpath:").getPath();
+            if (logger.isDebugEnabled()) {
+                logger.debug("Get Classpath: {}", path);
+            }
+            return path;
         } else {
             return emailProperties.getTemplateDir();
         }

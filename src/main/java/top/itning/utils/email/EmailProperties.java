@@ -7,7 +7,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  *
  * @author itning
  */
-@ConfigurationProperties(prefix = "util.email")
+@ConfigurationProperties(prefix = "utils.email")
 public class EmailProperties {
     /**
      * 启用
