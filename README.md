@@ -48,7 +48,7 @@
 <dependency>
     <groupId>com.github.itning</groupId>
     <artifactId>utils-spring-boot-starter</artifactId>
-    <version>1.0.0-RELEASE</version>
+    <version>1.0.1-RELEASE</version>
 </dependency>
 ```
 
@@ -69,6 +69,6 @@ allprojects {
 
 ```groovy
 dependencies {
-	implementation 'com.github.itning:utils-spring-boot-starter:1.0.0-RELEASE'
+	implementation 'com.github.itning:utils-spring-boot-starter:1.0.1-RELEASE'
 }
 ```

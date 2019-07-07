@@ -6,7 +6,7 @@
 
     <groupId>top.itning</groupId>
     <artifactId>utils-spring-boot-starter</artifactId>
-    <version>1.0.0-RELEASE</version>
+    <version>1.0.1-RELEASE</version>
 
     <url>https://github.com/itning/utils-spring-boot-starter</url>
     <licenses>
