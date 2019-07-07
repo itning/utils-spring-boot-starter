@@ -17,6 +17,8 @@ import java.util.Map;
 import java.util.Properties;
 
 /**
+ * 邮件发送工具
+ *
  * @author itning
  * @date 2019/6/25 15:58
  */
